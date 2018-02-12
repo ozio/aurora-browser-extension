@@ -1,0 +1,26 @@
+{
+  "name": "aurora-chrome-extension",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/app.js",
+  "scripts": {
+    "build": "webpack",
+    "dev": "webpack --watch",
+    "server": "node ./server/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "reconnecting-websocket": "^3.2.2",
+    "url-parse": "^1.2.0"
+  },
+  "devDependencies": {
+    "@types/chrome": "0.0.59",
+    "awesome-typescript-loader": "^3.4.1",
+    "source-map-loader": "^0.2.3",
+    "typescript": "^2.7.1",
+    "webpack": "^3.11.0",
+    "ws": "^4.0.0"
+  }
+}
