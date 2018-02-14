@@ -2,13 +2,19 @@
 
 ## Install
 
-### Chrome/Opera
+Extension should start automatically.
+
+### Chrome/Opera Extension
 
 1. Open `chrome://extensions/`
-2. Check `Developer mode`
+2. Turn on `Developer mode`
 3. Press `Load unpacked extension...` and open folder `./extension/build/chrome`
 
-Extension should start automatically and then start trying to connect to the local websocket on `ws://localhost:1337`.
+### Firefox WebExtensions
+
+1. Open `about:debugging#addons`
+2. Turn on `Enable add-on debugging`
+3. Press `Load Temporary Add-on`
 
 ### WebSocket server
 

@@ -28,17 +28,23 @@ class ChromeExtension extends Extension {
 
   getCurrentURL(): Promise<string> {
     return new Promise((resolve) => {
-      chrome.tabs.query({ active: true, windowId: chrome.windows.WINDOW_ID_CURRENT }, (tabs) => {
-        let url;
+      chrome.tabs.query(
+        {
+          active: true,
+          windowId: chrome.windows.WINDOW_ID_CURRENT
+        },
+        (tabs) => {
+          let url;
 
-        if (tabs[0] && tabs[0].url) {
-          url = tabs[0].url;
-        } else {
-          url = null;
+          if (tabs[0] && tabs[0].url) {
+            url = tabs[0].url;
+          } else {
+            url = null;
+          }
+
+          resolve(url);
         }
-
-        resolve(url);
-      });
+      );
     });
   }
 

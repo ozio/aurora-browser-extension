@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -360,13 +360,16 @@ module.exports = ReconnectingWebsocket;
 
 
 /***/ }),
-/* 2 */
+/* 2 */,
+/* 3 */,
+/* 4 */,
+/* 5 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__adapter__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__manifest_json__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__adapter__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__manifest_json__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__manifest_json___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__manifest_json__);
 
 
@@ -374,7 +377,7 @@ const extension = new __WEBPACK_IMPORTED_MODULE_0__adapter__["a" /* default */](
 
 
 /***/ }),
-/* 3 */
+/* 6 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -388,7 +391,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 
-class ChromeExtension extends __WEBPACK_IMPORTED_MODULE_0__base__["a" /* default */] {
+class FirefoxExtension extends __WEBPACK_IMPORTED_MODULE_0__base__["a" /* default */] {
     addListeners() {
         const updateFocusHandler = () => __awaiter(this, void 0, void 0, function* () {
             yield this.updateFocus();
@@ -399,23 +402,24 @@ class ChromeExtension extends __WEBPACK_IMPORTED_MODULE_0__base__["a" /* default
         const updateUrlHandler = () => {
             this.updateCurrentURL();
         };
-        chrome.windows.onFocusChanged.addListener(updateFocusHandler);
-        chrome.tabs.onCreated.addListener(updateUrlHandler);
-        chrome.tabs.onUpdated.addListener(updateUrlHandler);
-        chrome.tabs.onMoved.addListener(updateUrlHandler);
-        chrome.tabs.onActivated.addListener(updateUrlHandler);
-        chrome.tabs.onHighlighted.addListener(updateUrlHandler);
-        chrome.tabs.onDetached.addListener(updateUrlHandler);
-        chrome.tabs.onAttached.addListener(updateUrlHandler);
-        chrome.tabs.onRemoved.addListener(updateUrlHandler);
-        chrome.tabs.onReplaced.addListener(updateUrlHandler);
+        browser.windows.onFocusChanged.addListener(updateFocusHandler);
+        browser.tabs.onActivated.addListener(updateUrlHandler);
+        browser.tabs.onAttached.addListener(updateUrlHandler);
+        browser.tabs.onCreated.addListener(updateUrlHandler);
+        browser.tabs.onDetached.addListener(updateUrlHandler);
+        browser.tabs.onHighlighted.addListener(updateUrlHandler);
+        browser.tabs.onMoved.addListener(updateUrlHandler);
+        browser.tabs.onRemoved.addListener(updateUrlHandler);
+        browser.tabs.onReplaced.addListener(updateUrlHandler);
+        browser.tabs.onUpdated.addListener(updateUrlHandler);
     }
     getCurrentURL() {
         return new Promise((resolve) => {
-            chrome.tabs.query({
+            browser.tabs.query({
                 active: true,
-                windowId: chrome.windows.WINDOW_ID_CURRENT
-            }, (tabs) => {
+                windowId: browser.windows.WINDOW_ID_CURRENT
+            })
+                .then((tabs) => {
                 let url;
                 if (tabs[0] && tabs[0].url) {
                     url = tabs[0].url;
@@ -429,21 +433,22 @@ class ChromeExtension extends __WEBPACK_IMPORTED_MODULE_0__base__["a" /* default
     }
     getFocused() {
         return new Promise((resolve) => {
-            chrome.windows.getCurrent(null, (window) => {
+            browser.windows.getCurrent(null)
+                .then((window) => {
                 const focusedNow = window && window.focused;
                 resolve(focusedNow);
             });
         });
     }
 }
-/* harmony default export */ __webpack_exports__["a"] = (ChromeExtension);
+/* harmony default export */ __webpack_exports__["a"] = (FirefoxExtension);
 
 
 /***/ }),
-/* 4 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "./extension/build/chrome/manifest.json";
+module.exports = __webpack_require__.p + "./extension/build/firefox/manifest.json";
 
 /***/ })
 /******/ ]);

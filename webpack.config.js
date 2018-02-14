@@ -1,12 +1,16 @@
 const { CheckerPlugin } = require('awesome-typescript-loader');
 
+const extensionInputPath = './extension/src';
+const extensionOutputPath = './extension/build';
+
 module.exports = {
   entry: {
-    chrome: './extension/src/chrome/extension.ts'
+    chrome: `${extensionInputPath}/chrome/index.ts`,
+    firefox: `${extensionInputPath}/firefox/index.ts`
   },
 
   output: {
-    filename: './extension/build/[name]/extension.js'
+    filename: `${extensionOutputPath}/[name]/extension.js`
   },
 
   resolve: {
@@ -17,6 +21,16 @@ module.exports = {
 
   module: {
     rules: [
+      {
+        test: /\.json$/,
+        loader: 'file-loader',
+        options: {
+          name: (file) => {
+            const relativeManifestPath = file.split('/').slice(-2).join('/');
+            return `${extensionOutputPath}/${relativeManifestPath}`;
+          }
+        }
+      },
       {
         test: /\.ts$/,
         loader: 'awesome-typescript-loader'
