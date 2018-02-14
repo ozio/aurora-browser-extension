@@ -6,13 +6,13 @@ Extension should start automatically.
 
 ### Chrome/Opera Extension
 
-1. Open [`chrome://extensions/`](chrome://extensions/)
+1. Open [chrome://extensions/](chrome://extensions/)
 2. Turn on `Developer mode`
 3. Press `Load unpacked extension...` and open folder `./extension/build/chrome`
 
 ### Firefox WebExtensions
 
-1. Open [`about:debugging#addons`](about:debugging#addons)
+1. Open [about:debugging#addons](about:debugging#addons)
 2. Turn on `Enable add-on debugging`
 3. Press `Load Temporary Add-on`
 
