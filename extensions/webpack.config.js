@@ -1,7 +1,7 @@
 const { CheckerPlugin } = require('awesome-typescript-loader');
 
-const extensionInputPath = './extension/src';
-const extensionOutputPath = './extension/build';
+const extensionInputPath = './extensions/src';
+const extensionOutputPath = './extensions/build';
 
 module.exports = {
   entry: {

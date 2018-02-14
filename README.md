@@ -8,13 +8,13 @@ Extension should start automatically.
 
 1. Open `chrome://extensions/`
 2. Turn on `Developer mode`
-3. Press `Load unpacked extension...` and open folder `./extension/build/chrome`
+3. Press `Load unpacked extension...` and open folder `./extensions/build/chrome`
 
 ### Firefox WebExtensions
 
 1. Open `about:debugging#addons`
 2. Turn on `Enable add-on debugging`
-3. Press `Load Temporary Add-on`
+3. Press `Load Temporary Add-on` and open `./extensions/build/firefox/index.js`
 
 ### WebSocket server
 
