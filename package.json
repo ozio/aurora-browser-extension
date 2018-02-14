@@ -12,8 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "reconnecting-websocket": "^3.2.2",
-    "url-parse": "^1.2.0"
+    "reconnecting-websocket": "^3.2.2"
   },
   "devDependencies": {
     "@types/chrome": "0.0.59",

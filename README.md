@@ -6,13 +6,13 @@ Extension should start automatically.
 
 ### Chrome/Opera Extension
 
-1. Open `chrome://extensions/`
+1. Open `[chrome://extensions/](chrome://extensions/)`
 2. Turn on `Developer mode`
 3. Press `Load unpacked extension...` and open folder `./extension/build/chrome`
 
 ### Firefox WebExtensions
 
-1. Open `about:debugging#addons`
+1. Open `[about:debugging#addons](about:debugging#addons)`
 2. Turn on `Enable add-on debugging`
 3. Press `Load Temporary Add-on`
 
@@ -32,14 +32,38 @@ For now, the extension can only send messages about current tab location and act
 
 **Examples:**
 
-Browser window is focused/unfocused (I just realized that you dont need this type of messages, omg):
+Browser window is focused or unfocused:
 ```json
-{"version":1,"type":"focus","focused":true}
+{
+  "version": 1,
+  "type": "focus",
+  "focused": true
+}
 ```
 
-Bbrowser tab is have a new url:
+Browser tab have a new url:
 ```json
-{"version":1,"type":"url","url":"http://youtube.com"}
+{
+  "version": 1,
+  "type": "url",
+  "hash": "",
+  "host": "www.youtube.com",
+  "hostname": "www.youtube.com",
+  "href": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+  "password": "",
+  "pathname": "/watch",
+  "port": "",
+  "protocol": "https:",
+  "username": "",
+  "search": "?v=dQw4w9WgXcQ",
+  "searchParams": { 
+    "v": "dQw4w9WgXcQ" 
+  }
+}
 ```
 
-Any suggestions?
+## Roadmap
+
+Extensions:
+- [ ] Apple Safari
+- [ ] Microsoft Edge

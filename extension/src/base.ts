@@ -23,6 +23,29 @@ abstract class Extension {
     });
   }
 
+  static getURLData(url: string): URLData {
+    const urlObject = new URL(url);
+    const searchObject = {};
+
+    for (let item of urlObject.searchParams) {
+      searchObject[item[0]] = item[1];
+    }
+
+    return {
+      hash: urlObject.hash,
+      host: urlObject.host,
+      hostname: urlObject.hostname,
+      href: urlObject.href,
+      password: urlObject.password,
+      pathname: urlObject.pathname,
+      port: urlObject.port,
+      protocol: urlObject.protocol,
+      username: urlObject.username,
+      search: urlObject.search,
+      searchParams: searchObject,
+    };
+  }
+
   connect(path: string) {
     this.ws = new ReconnectingWebsocket(path);
   }
@@ -48,7 +71,10 @@ abstract class Extension {
 
       if (!(this.isBrowserFocused === true || forceUpdate)) return;
 
-      this.sendMessage('url', { url: this.currentURL });
+      this.sendMessage('url', {
+        ...Extension.getURLData(this.currentURL)
+      });
+
     }
   }
 

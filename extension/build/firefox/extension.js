@@ -96,6 +96,26 @@ class Extension {
             yield this.updateCurrentURL(true);
         }));
     }
+    static getURLData(url) {
+        const urlObject = new URL(url);
+        const searchObject = {};
+        for (let item of urlObject.searchParams) {
+            searchObject[item[0]] = item[1];
+        }
+        return {
+            hash: urlObject.hash,
+            host: urlObject.host,
+            hostname: urlObject.hostname,
+            href: urlObject.href,
+            password: urlObject.password,
+            pathname: urlObject.pathname,
+            port: urlObject.port,
+            protocol: urlObject.protocol,
+            username: urlObject.username,
+            search: urlObject.search,
+            searchParams: searchObject,
+        };
+    }
     connect(path) {
         this.ws = new __WEBPACK_IMPORTED_MODULE_0_reconnecting_websocket__(path);
     }
@@ -115,7 +135,7 @@ class Extension {
                     this.currentURL = url;
                 if (!(this.isBrowserFocused === true || forceUpdate))
                     return;
-                this.sendMessage('url', { url: this.currentURL });
+                this.sendMessage('url', Object.assign({}, Extension.getURLData(this.currentURL)));
             }
         });
     }
@@ -125,12 +145,7 @@ class Extension {
             if (!(this.isBrowserFocused !== focused || forceUpdate))
                 return;
             this.isBrowserFocused = focused;
-            if (focused) {
-                this.sendMessage('focus', { focused });
-            }
-            else {
-                this.sendMessage('focus', { focused });
-            }
+            this.sendMessage('focus', { focused });
         });
     }
 }
