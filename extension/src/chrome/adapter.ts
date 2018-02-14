@@ -16,7 +16,6 @@ class ChromeExtension extends Extension {
     };
 
     chrome.windows.onFocusChanged.addListener(updateFocusHandler);
-
     chrome.tabs.onCreated.addListener(updateUrlHandler);
     chrome.tabs.onUpdated.addListener(updateUrlHandler);
     chrome.tabs.onMoved.addListener(updateUrlHandler);

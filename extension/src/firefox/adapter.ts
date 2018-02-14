@@ -16,7 +16,6 @@ class FirefoxExtension extends Extension {
     };
 
     browser.windows.onFocusChanged.addListener(updateFocusHandler);
-
     browser.tabs.onActivated.addListener(updateUrlHandler);
     browser.tabs.onAttached.addListener(updateUrlHandler);
     browser.tabs.onCreated.addListener(updateUrlHandler);

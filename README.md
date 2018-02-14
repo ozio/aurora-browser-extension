@@ -76,7 +76,9 @@ Browser tab have a new url:
 
 ## Roadmap
 
-- [ ] Extensions: Apple Safari
-- [ ] Extensions: Microsoft Edge
-- [ ] User SDK: Keymaps
-- [ ] Analytics
+- [ ] Extensions: Apple Safari;
+- [ ] Extensions: Microsoft Edge;
+- [ ] User SDK: Keymaps;
+- [ ] UI: Visual Preferences;
+- [ ] Drop build target to `es5`;
+- [ ] Analytics.

@@ -1044,7 +1044,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__manifest_json___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__manifest_json__);
 
 
-const extension = new __WEBPACK_IMPORTED_MODULE_0__adapter__["a" /* default */]();
+/* harmony default export */ __webpack_exports__["default"] = (new __WEBPACK_IMPORTED_MODULE_0__adapter__["a" /* default */]());
 
 
 /***/ }),

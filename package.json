@@ -4,8 +4,11 @@
   "description": "",
   "main": "./src/app.js",
   "scripts": {
-    "build": "rm -rf ./extension/build; webpack",
-    "dev": "rm -rf ./extension/build; webpack --watch",
+    "build": "npm run build-ext; npm run build-sdk",
+    "build-ext": "rm -rf ./extension/build; webpack --config ./extension/webpack.config.js",
+    "dev-ext": "rm -rf ./extension/build; webpack --config ./extension/webpack.config.js --watch",
+    "build-sdk": "rm -rf ./sdk/build; webpack --config ./sdk/webpack.config.js",
+    "dev-sdk": "rm -rf ./sdk/build; webpack --config ./sdk/webpack.config.js --watch",
     "server": "node ./server/server.js"
   },
   "keywords": [],
@@ -13,6 +16,7 @@
   "license": "ISC",
   "dependencies": {
     "bowser": "^1.9.2",
+    "eventemitter3": "^3.0.1",
     "reconnecting-websocket": "^3.2.2"
   },
   "devDependencies": {
