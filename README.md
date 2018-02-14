@@ -68,6 +68,6 @@ Browser tab have a new url:
 
 ## Roadmap
 
-Extensions:
-- [ ] Apple Safari
-- [ ] Microsoft Edge
+- [ ] Extensions: Apple Safari
+- [ ] Extensions: Microsoft Edge
+- [ ] User SDK: Keymaps
