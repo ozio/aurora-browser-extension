@@ -13,12 +13,17 @@ declare interface URLData {
   search: string;
   searchParams: {
     [key: string]: string;
-  }
+  };
 }
 
-declare interface MessageMeta {
-  type: MessageType;
+declare interface BrowserInterface {
+  name: string;
+  userAgent: string;
+}
+
+declare interface MetaInterface {
   version: number;
+  browser: BrowserInterface;
 }
 
 declare interface FocusMessagePayload {
@@ -31,4 +36,7 @@ declare interface UrlMessagePayload extends URLData {
 
 declare type MessagePayload = FocusMessagePayload | UrlMessagePayload;
 
-declare type Message = MessageMeta & { payload: MessagePayload };
+declare type Message = {
+  type: MessageType;
+  payload: MessagePayload;
+} & MetaInterface;

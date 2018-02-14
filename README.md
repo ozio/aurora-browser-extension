@@ -37,6 +37,10 @@ Browser window is focused or unfocused:
 {
   "version": 1,
   "type": "focus",
+  "browser": {
+    "name": "Opera",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36 OPR/50.0.2762.67"
+  },
   "payload": {
     "focused": true
   }
@@ -48,6 +52,10 @@ Browser tab have a new url:
 {
   "version": 1,
   "type": "url",
+  "browser": {
+    "name": "Opera",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36 OPR/50.0.2762.67"
+  },
   "payload": {
     "hash": "",
     "host": "www.youtube.com",
@@ -71,3 +79,4 @@ Browser tab have a new url:
 - [ ] Extensions: Apple Safari
 - [ ] Extensions: Microsoft Edge
 - [ ] User SDK: Keymaps
+- [ ] Analytics

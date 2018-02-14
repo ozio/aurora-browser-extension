@@ -1,4 +1,5 @@
 import * as ReconnectingWebsocket from 'reconnecting-websocket';
+import * as bowser from 'bowser';
 
 const WEBSOCKET_PROTOCOL = 'ws';
 const WEBSOCKET_PORT = 1337;
@@ -8,26 +9,29 @@ const WEBSOCKET_URL = `${WEBSOCKET_PROTOCOL}://${WEBSOCKET_DOMAIN}:${WEBSOCKET_P
 const API_VERSION = 1;
 
 abstract class Extension {
-  currentURL?: string = null;
 
-  isBrowserFocused?: boolean = null;
-
-  ws: ReconnectingWebsocket;
-
-  constructor() {
-    this.connect(WEBSOCKET_URL);
-    this.addListeners();
-    this.ws.addEventListener('open', async () => {
-      await this.updateFocus(true);
-      await this.updateCurrentURL(true);
-    });
+  /** Generate meta data */
+  static getMetaData(): MetaInterface {
+    return {
+      version: API_VERSION,
+      browser: Extension.getBrowserData(),
+    };
   }
 
+  /** Generate browser data */
+  static getBrowserData(): BrowserInterface {
+    return {
+      name: bowser.name,
+      userAgent: navigator.userAgent,
+    };
+  }
+
+  /** Generate URL data */
   static getURLData(url: string): URLData {
     const urlObject = new URL(url);
     const searchObject = {};
 
-    for (let item of urlObject.searchParams) {
+    for (const item of urlObject.searchParams) {
       searchObject[item[0]] = item[1];
     }
 
@@ -46,22 +50,43 @@ abstract class Extension {
     };
   }
 
-  connect(path: string) {
-    this.ws = new ReconnectingWebsocket(path);
+  /** Initialize socket connect */
+  static connect(path: string): ReconnectingWebsocket {
+    return new ReconnectingWebsocket(path);
   }
 
+  /** URL of current tab of current window */
+  currentURL?: string = null;
+
+  /** Browser is focused */
+  isBrowserFocused?: boolean = null;
+
+  /** WebSocket object */
+  ws: ReconnectingWebsocket;
+
+  constructor() {
+    this.ws = Extension.connect(WEBSOCKET_URL);
+
+    this.ws.addEventListener('open', async () => {
+      await this.updateFocus(true);
+      await this.updateCurrentURL(true);
+    });
+  }
+
+  /** Send message */
   sendMessage(type: MessageType, payload: MessagePayload) {
     const message: Message = {
+      ...Extension.getMetaData(),
       type,
-      version: API_VERSION,
       payload,
     };
 
     try {
       this.ws.send(JSON.stringify(message));
-    } catch(e) {}
+    } catch (e) {}
   }
 
+  /** Update current URL message */
   async updateCurrentURL(forceUpdate?: boolean) {
     const url = await this.getCurrentURL();
     const urlHasChanged = url !== this.currentURL;
@@ -72,12 +97,12 @@ abstract class Extension {
       if (!(this.isBrowserFocused === true || forceUpdate)) return;
 
       this.sendMessage('url', {
-        ...Extension.getURLData(this.currentURL)
+        ...Extension.getURLData(this.currentURL),
       });
-
     }
   }
 
+  /** Update focus message */
   async updateFocus(forceUpdate?: boolean) {
     const focused = await this.getFocused();
 
@@ -87,10 +112,12 @@ abstract class Extension {
     this.sendMessage('focus', { focused });
   }
 
-  abstract addListeners();
+  /** Abstract methods, which should implemented in adapter class with custom browser API: */
 
+  /** Method that implements return of page URL from current tab from current browser window */
   abstract getCurrentURL(): Promise<string>;
 
+  /** Method that implements return of current browser focus state */
   abstract getFocused(): Promise<boolean>;
 }
 

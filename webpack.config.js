@@ -32,7 +32,22 @@ module.exports = {
         }
       },
       {
+        enforce: 'pre',
         test: /\.ts$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'tslint-loader',
+            options: {
+              failOnError: false,
+              emitWarning: true,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.ts$/,
+        exclude: /node_modules/,
         loader: 'awesome-typescript-loader'
       }
     ]

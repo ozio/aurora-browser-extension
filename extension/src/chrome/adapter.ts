@@ -1,7 +1,9 @@
 import Extension from '../base';
 
 class ChromeExtension extends Extension {
-  addListeners() {
+  constructor() {
+    super();
+
     const updateFocusHandler = async () => {
       await this.updateFocus();
       if (this.isBrowserFocused) {
@@ -12,7 +14,7 @@ class ChromeExtension extends Extension {
     const updateUrlHandler = () => {
       this.updateCurrentURL();
     };
-    
+
     chrome.windows.onFocusChanged.addListener(updateFocusHandler);
 
     chrome.tabs.onCreated.addListener(updateUrlHandler);
@@ -31,7 +33,7 @@ class ChromeExtension extends Extension {
       chrome.tabs.query(
         {
           active: true,
-          windowId: chrome.windows.WINDOW_ID_CURRENT
+          windowId: chrome.windows.WINDOW_ID_CURRENT,
         },
         (tabs) => {
           let url;

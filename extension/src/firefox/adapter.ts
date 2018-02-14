@@ -1,7 +1,9 @@
 import Extension from '../base';
 
 class FirefoxExtension extends Extension {
-  addListeners() {
+  constructor() {
+    super();
+
     const updateFocusHandler = async () => {
       await this.updateFocus();
       if (this.isBrowserFocused) {
@@ -30,7 +32,7 @@ class FirefoxExtension extends Extension {
     return new Promise((resolve) => {
       browser.tabs.query({
         active: true,
-        windowId: browser.windows.WINDOW_ID_CURRENT
+        windowId: browser.windows.WINDOW_ID_CURRENT,
       })
         .then((tabs) => {
           let url;
