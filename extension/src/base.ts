@@ -27,7 +27,7 @@ abstract class Extension {
     this.ws = new ReconnectingWebsocket(path);
   }
 
-  sendMessage(type: MessageType, payload: MessagePayload): void {
+  sendMessage(type: MessageType, payload: MessagePayload) {
     const message: Message = {
       ...payload,
       type,
@@ -58,14 +58,10 @@ abstract class Extension {
     if (!(this.isBrowserFocused !== focused || forceUpdate)) return;
     this.isBrowserFocused = focused;
 
-    if (focused) {
-      this.sendMessage('focus', { focused });
-    } else {
-      this.sendMessage('focus', { focused });
-    }
+    this.sendMessage('focus', { focused });
   }
 
-  abstract addListeners(): void;
+  abstract addListeners();
 
   abstract getCurrentURL(): Promise<string>;
 
