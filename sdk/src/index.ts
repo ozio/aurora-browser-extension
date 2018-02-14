@@ -1,7 +1,9 @@
 import { EventEmitter } from 'eventemitter3';
 
 class AuroraSDK extends EventEmitter {
-  // SDK initial
+  public init(options: SDKOptions) {
+    this.emit('init', this);
+  }
 }
 
-export default AuroraSDK;
+export default new AuroraSDK();

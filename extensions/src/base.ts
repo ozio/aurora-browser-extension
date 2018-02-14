@@ -112,7 +112,7 @@ abstract class Extension {
     this.sendMessage('focus', { focused });
   }
 
-  /** Abstract methods, which should implemented in adapter class with custom browser API: */
+  /** Abstract methods, which should be implemented in adapter class with custom browser API: */
 
   /** Method that implements return of page URL from current tab from current browser window */
   abstract getCurrentURL(): Promise<string>;
