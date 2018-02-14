@@ -5,8 +5,8 @@
   "main": "./src/app.js",
   "scripts": {
     "build": "npm run build-ext; npm run build-sdk",
-    "build-ext": "rm -rf ./extension/build; webpack --config ./extension/webpack.config.js",
-    "dev-ext": "rm -rf ./extension/build; webpack --config ./extension/webpack.config.js --watch",
+    "build-ext": "rm -rf ./extensions/build; webpack --config ./extensions/webpack.config.js",
+    "dev-ext": "rm -rf ./extensions/build; webpack --config ./extensions/webpack.config.js --watch",
     "build-sdk": "rm -rf ./sdk/build; webpack --config ./sdk/webpack.config.js",
     "dev-sdk": "rm -rf ./sdk/build; webpack --config ./sdk/webpack.config.js --watch",
     "server": "node ./server/server.js"
