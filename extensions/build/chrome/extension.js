@@ -90,9 +90,7 @@ const WEBSOCKET_URL = `${WEBSOCKET_PROTOCOL}://${WEBSOCKET_DOMAIN}:${WEBSOCKET_P
 const API_VERSION = 1;
 class Extension {
     constructor() {
-        /** URL of current tab of current window */
         this.currentURL = null;
-        /** Browser is focused */
         this.isBrowserFocused = null;
         this.ws = Extension.connect(WEBSOCKET_URL);
         this.ws.addEventListener('open', () => __awaiter(this, void 0, void 0, function* () {
@@ -100,21 +98,18 @@ class Extension {
             yield this.updateCurrentURL(true);
         }));
     }
-    /** Generate meta data */
     static getMetaData() {
         return {
             version: API_VERSION,
             browser: Extension.getBrowserData(),
         };
     }
-    /** Generate browser data */
     static getBrowserData() {
         return {
             name: __WEBPACK_IMPORTED_MODULE_1_bowser__["name"],
-            userAgent: navigator.userAgent,
+            version: __WEBPACK_IMPORTED_MODULE_1_bowser__["version"],
         };
     }
-    /** Generate URL data */
     static getURLData(url) {
         const urlObject = new URL(url);
         const searchObject = {};
@@ -135,11 +130,9 @@ class Extension {
             searchParams: searchObject,
         };
     }
-    /** Initialize socket connect */
     static connect(path) {
         return new __WEBPACK_IMPORTED_MODULE_0_reconnecting_websocket__(path);
     }
-    /** Send message */
     sendMessage(type, payload) {
         const message = Object.assign({}, Extension.getMetaData(), { type,
             payload });
@@ -148,7 +141,6 @@ class Extension {
         }
         catch (e) { }
     }
-    /** Update current URL message */
     updateCurrentURL(forceUpdate) {
         return __awaiter(this, void 0, void 0, function* () {
             const url = yield this.getCurrentURL();
@@ -162,7 +154,6 @@ class Extension {
             }
         });
     }
-    /** Update focus message */
     updateFocus(forceUpdate) {
         return __awaiter(this, void 0, void 0, function* () {
             const focused = yield this.getFocused();
@@ -1118,7 +1109,7 @@ class ChromeExtension extends __WEBPACK_IMPORTED_MODULE_0__base__["a" /* default
 /* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "./extension/build/chrome/manifest.json";
+module.exports = __webpack_require__.p + "./extensions/build/chrome/manifest.json";
 
 /***/ })
 /******/ ]);

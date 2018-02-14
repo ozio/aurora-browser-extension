@@ -18,7 +18,7 @@ declare interface URLData {
 
 declare interface BrowserInterface {
   name: string;
-  userAgent: string;
+  version: string | number;
 }
 
 declare interface MetaInterface {

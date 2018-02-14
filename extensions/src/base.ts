@@ -22,7 +22,7 @@ abstract class Extension {
   static getBrowserData(): BrowserInterface {
     return {
       name: bowser.name,
-      userAgent: navigator.userAgent,
+      version: bowser.version,
     };
   }
 
