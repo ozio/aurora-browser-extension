@@ -52,9 +52,9 @@ abstract class Extension {
 
   sendMessage(type: MessageType, payload: MessagePayload) {
     const message: Message = {
-      ...payload,
       type,
       version: API_VERSION,
+      payload,
     };
 
     try {

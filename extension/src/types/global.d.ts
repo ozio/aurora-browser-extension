@@ -31,4 +31,4 @@ declare interface UrlMessagePayload extends URLData {
 
 declare type MessagePayload = FocusMessagePayload | UrlMessagePayload;
 
-declare type Message = MessagePayload & MessageMeta;
+declare type Message = MessageMeta & { payload: MessagePayload };

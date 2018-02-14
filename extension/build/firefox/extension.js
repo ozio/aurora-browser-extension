@@ -120,7 +120,11 @@ class Extension {
         this.ws = new __WEBPACK_IMPORTED_MODULE_0_reconnecting_websocket__(path);
     }
     sendMessage(type, payload) {
-        const message = Object.assign({}, payload, { type, version: API_VERSION });
+        const message = {
+            type,
+            version: API_VERSION,
+            payload,
+        };
         try {
             this.ws.send(JSON.stringify(message));
         }

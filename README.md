@@ -37,7 +37,9 @@ Browser window is focused or unfocused:
 {
   "version": 1,
   "type": "focus",
-  "focused": true
+  "payload": {
+    "focused": true
+  }
 }
 ```
 
@@ -46,18 +48,20 @@ Browser tab have a new url:
 {
   "version": 1,
   "type": "url",
-  "hash": "",
-  "host": "www.youtube.com",
-  "hostname": "www.youtube.com",
-  "href": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-  "password": "",
-  "pathname": "/watch",
-  "port": "",
-  "protocol": "https:",
-  "username": "",
-  "search": "?v=dQw4w9WgXcQ",
-  "searchParams": { 
-    "v": "dQw4w9WgXcQ" 
+  "payload": {
+    "hash": "",
+    "host": "www.youtube.com",
+    "hostname": "www.youtube.com",
+    "href": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "password": "",
+    "pathname": "/watch",
+    "port": "",
+    "protocol": "https:",
+    "username": "",
+    "search": "?v=dQw4w9WgXcQ",
+    "searchParams": {
+      "v": "dQw4w9WgXcQ"
+    }
   }
 }
 ```
