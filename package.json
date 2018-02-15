@@ -16,7 +16,9 @@
   "license": "ISC",
   "dependencies": {
     "bowser": "^1.9.2",
+    "cli-highlight": "^1.2.3",
     "eventemitter3": "^3.0.1",
+    "moment": "^2.20.1",
     "reconnecting-websocket": "^3.2.2"
   },
   "devDependencies": {

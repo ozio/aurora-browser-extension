@@ -14,7 +14,7 @@ Extension should start automatically.
 
 1. Open `about:debugging#addons`
 2. Turn on `Enable add-on debugging`
-3. Press `Load Temporary Add-on` and open `./extensions/build/firefox/index.js`
+3. Press `Load Temporary Add-on` and open `./extensions/build/firefox/extension.js`
 
 ### WebSocket server
 
@@ -28,7 +28,7 @@ How to start it:
 
 ## Protocol
 
-For now, the extension can only send messages about current tab location and active/inactive browser state.
+For now, the extension can only send messages about current tab location and active/inactive browser state. Every message have information about API version, type of message and information about browser.
 
 **Examples:**
 
@@ -39,7 +39,7 @@ Browser window is focused or unfocused:
   "type": "focus",
   "browser": {
     "name": "Opera",
-    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36 OPR/50.0.2762.67"
+    "version": "50.0"
   },
   "payload": {
     "focused": true
@@ -54,7 +54,7 @@ Browser tab have a new url:
   "type": "url",
   "browser": {
     "name": "Opera",
-    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36 OPR/50.0.2762.67"
+    "version": "50.0"
   },
   "payload": {
     "hash": "",
