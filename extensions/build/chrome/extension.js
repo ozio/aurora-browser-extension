@@ -64,119 +64,7 @@
 /******/ })
 /************************************************************************/
 /******/ ([
-/* 0 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_reconnecting_websocket__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_reconnecting_websocket___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_reconnecting_websocket__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_bowser__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_bowser___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_bowser__);
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-
-
-const WEBSOCKET_PROTOCOL = 'ws';
-const WEBSOCKET_PORT = 1337;
-const WEBSOCKET_DOMAIN = 'localhost';
-const WEBSOCKET_PATH = '';
-const WEBSOCKET_URL = `${WEBSOCKET_PROTOCOL}://${WEBSOCKET_DOMAIN}:${WEBSOCKET_PORT}/${WEBSOCKET_PATH}`;
-const API_VERSION = 1;
-class Extension {
-    constructor() {
-        /** URL of current tab of current window */
-        this.currentURL = null;
-        /** Browser is focused */
-        this.isBrowserFocused = null;
-        this.ws = Extension.connect(WEBSOCKET_URL);
-        this.ws.addEventListener('open', () => __awaiter(this, void 0, void 0, function* () {
-            yield this.updateFocus(true);
-            yield this.updateCurrentURL(true);
-        }));
-    }
-    /** Generate meta data */
-    static getMetaData() {
-        return {
-            version: API_VERSION,
-            browser: Extension.getBrowserData(),
-        };
-    }
-    /** Generate browser data */
-    static getBrowserData() {
-        return {
-            name: __WEBPACK_IMPORTED_MODULE_1_bowser__["name"],
-            version: __WEBPACK_IMPORTED_MODULE_1_bowser__["version"],
-        };
-    }
-    /** Generate URL data */
-    static getURLData(url) {
-        const urlObject = new URL(url);
-        const searchObject = {};
-        for (const item of urlObject.searchParams) {
-            searchObject[item[0]] = item[1];
-        }
-        return {
-            hash: urlObject.hash,
-            host: urlObject.host,
-            hostname: urlObject.hostname,
-            href: urlObject.href,
-            password: urlObject.password,
-            pathname: urlObject.pathname,
-            port: urlObject.port,
-            protocol: urlObject.protocol,
-            username: urlObject.username,
-            search: urlObject.search,
-            searchParams: searchObject,
-        };
-    }
-    /** Initialize socket connect */
-    static connect(path) {
-        return new __WEBPACK_IMPORTED_MODULE_0_reconnecting_websocket__(path);
-    }
-    /** Send message */
-    sendMessage(type, payload) {
-        const message = Object.assign({}, Extension.getMetaData(), { type,
-            payload });
-        try {
-            this.ws.send(JSON.stringify(message));
-        }
-        catch (e) { }
-    }
-    /** Update current URL message */
-    updateCurrentURL(forceUpdate) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const url = yield this.getCurrentURL();
-            const urlHasChanged = url !== this.currentURL;
-            if (urlHasChanged || forceUpdate) {
-                if (url)
-                    this.currentURL = url;
-                if (!(this.isBrowserFocused === true || forceUpdate))
-                    return;
-                this.sendMessage('url', Object.assign({}, Extension.getURLData(this.currentURL)));
-            }
-        });
-    }
-    /** Update focus message */
-    updateFocus(forceUpdate) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const focused = yield this.getFocused();
-            if (!(this.isBrowserFocused !== focused || forceUpdate))
-                return;
-            this.isBrowserFocused = focused;
-            this.sendMessage('focus', { focused });
-        });
-    }
-}
-/* harmony default export */ __webpack_exports__["a"] = (Extension);
-
-
-/***/ }),
+/* 0 */,
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1052,7 +940,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__extension__ = __webpack_require__(10);
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -1062,7 +950,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 
-class ChromeExtension extends __WEBPACK_IMPORTED_MODULE_0__base__["a" /* default */] {
+class ChromeExtension extends __WEBPACK_IMPORTED_MODULE_0__extension__["a" /* default */] {
     constructor() {
         super();
         const updateFocusHandler = () => __awaiter(this, void 0, void 0, function* () {
@@ -1119,6 +1007,122 @@ class ChromeExtension extends __WEBPACK_IMPORTED_MODULE_0__base__["a" /* default
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "./extensions/build/chrome/manifest.json";
+
+/***/ }),
+/* 7 */,
+/* 8 */,
+/* 9 */,
+/* 10 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_reconnecting_websocket__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_reconnecting_websocket___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_reconnecting_websocket__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_bowser__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_bowser___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_bowser__);
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+
+
+const WEBSOCKET_PROTOCOL = 'ws';
+const WEBSOCKET_PORT = 1337;
+const WEBSOCKET_DOMAIN = 'localhost';
+const WEBSOCKET_PATH = '';
+const WEBSOCKET_URL = `${WEBSOCKET_PROTOCOL}://${WEBSOCKET_DOMAIN}:${WEBSOCKET_PORT}/${WEBSOCKET_PATH}`;
+const API_VERSION = 1;
+class Extension {
+    constructor() {
+        /** URL of current tab in current window */
+        this.currentURL = null;
+        /** Browser is focused flag */
+        this.isBrowserFocused = null;
+        this.ws = Extension.connect(WEBSOCKET_URL);
+        this.ws.addEventListener('open', () => __awaiter(this, void 0, void 0, function* () {
+            yield this.updateFocus(true);
+            yield this.updateCurrentURL(true);
+        }));
+    }
+    /** Generate meta data */
+    static getMetaData() {
+        return {
+            version: API_VERSION,
+            browser: Extension.getBrowserData(),
+        };
+    }
+    /** Generate browser data */
+    static getBrowserData() {
+        return {
+            name: __WEBPACK_IMPORTED_MODULE_1_bowser__["name"],
+            version: __WEBPACK_IMPORTED_MODULE_1_bowser__["version"],
+        };
+    }
+    /** Generate URL data */
+    static getURLData(url) {
+        const urlObject = new URL(url);
+        const searchObject = {};
+        for (const item of urlObject.searchParams) {
+            searchObject[item[0]] = item[1];
+        }
+        return {
+            hash: urlObject.hash,
+            host: urlObject.host,
+            hostname: urlObject.hostname,
+            href: urlObject.href,
+            password: urlObject.password,
+            pathname: urlObject.pathname,
+            port: urlObject.port,
+            protocol: urlObject.protocol,
+            username: urlObject.username,
+            search: urlObject.search,
+            searchParams: searchObject,
+        };
+    }
+    /** Initialize socket connect */
+    static connect(path) {
+        return new __WEBPACK_IMPORTED_MODULE_0_reconnecting_websocket__(path);
+    }
+    /** Send message */
+    sendMessage(type, payload) {
+        const message = Object.assign({}, Extension.getMetaData(), { type,
+            payload });
+        try {
+            this.ws.send(JSON.stringify(message));
+        }
+        catch (e) { }
+    }
+    /** Update current URL message */
+    updateCurrentURL(forceUpdate) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const url = yield this.getCurrentURL();
+            const urlHasChanged = url !== this.currentURL;
+            if (urlHasChanged || forceUpdate) {
+                if (url)
+                    this.currentURL = url;
+                if (!(this.isBrowserFocused === true || forceUpdate))
+                    return;
+                this.sendMessage('url', Object.assign({}, Extension.getURLData(this.currentURL)));
+            }
+        });
+    }
+    /** Update focus message */
+    updateFocus(forceUpdate) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const focused = yield this.getFocused();
+            if (!(this.isBrowserFocused !== focused || forceUpdate))
+                return;
+            this.isBrowserFocused = focused;
+            this.sendMessage('focus', { focused });
+        });
+    }
+}
+/* harmony default export */ __webpack_exports__["a"] = (Extension);
+
 
 /***/ })
 /******/ ]);

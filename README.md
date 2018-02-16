@@ -1,22 +1,20 @@
-# Aurora Browser Extenstion Test
+# Aurora Browser Extenstion
 
-## Install
+## Extensions
 
-Extension should start automatically.
-
-### Chrome/Opera Extension
+#### Chrome/Opera Extension
 
 1. Open `chrome://extensions/`
 2. Turn on `Developer mode`
 3. Press `Load unpacked extension...` and open folder `./extensions/build/chrome`
 
-### Firefox WebExtensions
+#### Firefox WebExtensions
 
 1. Open `about:debugging#addons`
 2. Turn on `Enable add-on debugging`
 3. Press `Load Temporary Add-on` and open `./extensions/build/firefox/extension.js`
 
-### WebSocket server
+## WebSocket server
 
 You can write your own server and start listening on `ws://localhost:1337`, but I also wrote a simple server on NodeJS for debug reasons.
 
@@ -76,11 +74,11 @@ Browser tab have a new url:
 
 ## Roadmap
 
-- [ ] Bundling: Turn on code minify;
-- [ ] Extensions: Apple Safari;
-- [ ] Extensions: Microsoft Edge;
-- [ ] User SDK: Connect SDK with Extension;
-- [ ] User SDK: Define website options (like Keymaps);
-- [ ] User SDK: Send website telemetry to Extension;
-- [ ] UI: Visual Preferences;
+- [ ] **Bundling:** Turn on code minify;
+- [ ] **Extensions:** Apple Safari;
+- [ ] **Extensions:** Microsoft Edge;
+- [ ] **User SDK:** Connect SDK with Extension;
+- [ ] **User SDK:** Define website options (like Keymaps);
+- [ ] **User SDK:** Send website telemetry to Extension;
+- [ ] **UI:** Visual Preferences;
 - [ ] Analytics.

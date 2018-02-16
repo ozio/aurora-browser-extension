@@ -55,10 +55,10 @@ abstract class Extension {
     return new ReconnectingWebsocket(path);
   }
 
-  /** URL of current tab of current window */
+  /** URL of current tab in current window */
   currentURL?: string = null;
 
-  /** Browser is focused */
+  /** Browser is focused flag */
   isBrowserFocused?: boolean = null;
 
   /** WebSocket object */

@@ -1,4 +1,4 @@
-import Extension from '../base';
+import Extension from '../extension';
 
 class ChromeExtension extends Extension {
   constructor() {
