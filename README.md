@@ -79,6 +79,8 @@ Browser tab have a new url:
 - [ ] Bundling: Turn on code minify;
 - [ ] Extensions: Apple Safari;
 - [ ] Extensions: Microsoft Edge;
-- [ ] User SDK: Keymaps;
+- [ ] User SDK: Connect SDK with Extension;
+- [ ] User SDK: Define website options (like Keymaps);
+- [ ] User SDK: Send website telemetry to Extension;
 - [ ] UI: Visual Preferences;
 - [ ] Analytics.
