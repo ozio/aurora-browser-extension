@@ -3,3 +3,5 @@ node_modules/
 *.iml
 *.sln
 .DS_Store
+
+**/build/**
