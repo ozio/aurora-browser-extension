@@ -16,13 +16,7 @@
 
 ## WebSocket server
 
-You can write your own server and start listening on `ws://localhost:1337`, but I also wrote a simple server on NodeJS for debug reasons.
-
-How to start it:
-
-1. Install `node` if you need.
-2. Run `npm install` in project folder.
-3. Run `npm run server`.
+You can write your own server and start listening on `ws://localhost:1337`, but I also wrote [a simple server on NodeJS](https://github.com/ozio/aurora-websocket-server) for debug reasons.
 
 ## Protocol
 
@@ -80,5 +74,6 @@ Browser tab have a new url:
 - [ ] **User SDK:** Connect SDK with Extension;
 - [ ] **User SDK:** Define website options (like Keymaps);
 - [ ] **User SDK:** Send website telemetry to Extension;
+- [ ] **Plugins:** For popular services like YouTube or Facebook;
 - [ ] **UI:** Visual Preferences;
 - [ ] Analytics.
