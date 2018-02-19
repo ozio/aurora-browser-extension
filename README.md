@@ -66,14 +66,16 @@ Browser tab have a new url:
 }
 ```
 
+## Browser SDK
+
+Also, website developers can include owr [small browser SDK](https://github.com/ozio/aurora-browser-sdk) to their own websites to send their metrics and settings to Aurora through extension.
+
 ## Roadmap
 
 - [ ] **Bundling:** Turn on code minify;
 - [ ] **Extensions:** Apple Safari;
 - [ ] **Extensions:** Microsoft Edge;
-- [ ] **User SDK:** Connect SDK with Extension;
-- [ ] **User SDK:** Define website options (like Keymaps);
-- [ ] **User SDK:** Send website telemetry to Extension;
+- [ ] **User SDK:** Handshake;
 - [ ] **Plugins:** For popular services like YouTube or Facebook;
 - [ ] **UI:** Visual Preferences;
 - [ ] Analytics.

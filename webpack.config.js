@@ -1,12 +1,16 @@
 const { CheckerPlugin } = require('awesome-typescript-loader');
 
+const extensionInputPath = './src';
+const extensionOutputPath = './build';
+
 module.exports = {
-  entry: './sdk/src/index.ts',
+  entry: {
+    chrome: `${extensionInputPath}/chrome/index.ts`,
+    firefox: `${extensionInputPath}/firefox/index.ts`
+  },
 
   output: {
-    filename: './sdk/build/sdk.js',
-    library: 'AuroraSDK',
-    libraryTarget: 'window',
+    filename: `${extensionOutputPath}/[name]/extension.js`
   },
 
   resolve: {
@@ -17,6 +21,16 @@ module.exports = {
 
   module: {
     rules: [
+      {
+        test: /\.json$/,
+        loader: 'file-loader',
+        options: {
+          name: (file) => {
+            const relativeManifestPath = file.split('/').slice(-2).join('/');
+            return `${extensionOutputPath}/${relativeManifestPath}`;
+          }
+        }
+      },
       {
         enforce: 'pre',
         test: /\.ts$/,
