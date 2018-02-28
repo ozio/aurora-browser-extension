@@ -66,9 +66,11 @@ Browser tab have a new url:
 }
 ```
 
-## Browser SDK
+**Explanation:** payload contains fields of [Location](https://developer.mozilla.org/en-US/docs/Web/API/Location) object. Additionally, `searchParams` field is parsed to key-value object.
 
-Also, website developers can include owr [small browser SDK](https://github.com/ozio/aurora-browser-sdk) to their own websites to send their metrics and settings to Aurora through extension.
+## ~~Browser SDK~~
+
+~~Also, website developers can include owr [small browser SDK](https://github.com/ozio/aurora-browser-sdk) to their own websites to send their metrics and settings to Aurora through extension.~~
 
 ## Roadmap
 
