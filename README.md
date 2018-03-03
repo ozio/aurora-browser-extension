@@ -74,7 +74,7 @@ Browser tab have a new url:
 
 ## Roadmap
 
-- [ ] **Bundling:** Turn on code minify;
+- [x] **Bundling:** Turn on code minify;
 - [ ] **Extensions:** Apple Safari;
 - [ ] **Extensions:** Microsoft Edge;
 - [ ] **User SDK:** Handshake;
