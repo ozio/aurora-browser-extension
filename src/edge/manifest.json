@@ -2,6 +2,7 @@
   "name": "Aurora Test Extension",
   "description": "",
   "version": "1.0",
+  "author": "Nikolay Solovyov <i@mr-ozio.ru>",
   "background": {
     "scripts": [
       "extension.js"
