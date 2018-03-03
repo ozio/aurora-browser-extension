@@ -8,6 +8,7 @@ module.exports = {
   entry: {
     chrome: `${extensionInputPath}/chrome/index.ts`,
     firefox: `${extensionInputPath}/firefox/index.ts`,
+    edge: `${extensionInputPath}/edge/index.ts`,
   },
 
   output: {

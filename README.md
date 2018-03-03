@@ -14,6 +14,12 @@
 2. Turn on `Enable add-on debugging`
 3. Press `Load Temporary Add-on` and open `./extensions/build/firefox/extension.js`
 
+#### Microsoft Edge Extensions
+
+1. Open `about:debugging#addons`
+2. Turn on `Enable add-on debugging`
+3. Press `Load Temporary Add-on` and open `./extensions/build/firefox/extension.js`
+
 ## WebSocket server
 
 You can write your own server and start listening on `ws://localhost:1337`, but I also wrote [a simple server on NodeJS](https://github.com/ozio/aurora-websocket-server) for debug reasons.
@@ -75,9 +81,7 @@ Browser tab have a new url:
 ## Roadmap
 
 - [x] **Bundling:** Turn on code minify;
-- [ ] **Extensions:** Apple Safari;
-- [ ] **Extensions:** Microsoft Edge;
-- [ ] **User SDK:** Handshake;
+- [x] **Extensions:** Microsoft Edge;
 - [ ] **Plugins:** For popular services like YouTube or Facebook;
 - [ ] **UI:** Visual Preferences;
 - [ ] Analytics.
