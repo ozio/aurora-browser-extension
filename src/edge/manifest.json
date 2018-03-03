@@ -5,7 +5,8 @@
   "background": {
     "scripts": [
       "extension.js"
-    ]
+    ],
+    "persistent": false
   },
   "permissions": [
     "tabs"
