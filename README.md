@@ -4,21 +4,23 @@
 
 #### Chrome/Opera Extension
 
-1. Open `chrome://extensions/`
-2. Turn on `Developer mode`
-3. Press `Load unpacked extension...` and open folder `./extensions/build/chrome`
+1. Open `chrome://extensions/`.
+2. Select the `Developer mode` checkbox.
+3. Press `Load unpacked extension...` and open `./extensions/build/chrome` folder.
 
 #### Firefox WebExtensions
 
-1. Open `about:debugging#addons`
-2. Turn on `Enable add-on debugging`
-3. Press `Load Temporary Add-on` and open `./extensions/build/firefox/extension.js`
+1. Open `about:debugging#addons`.
+2. Select the `Enable add-on debugging` checkbox.
+3. Press `Load Temporary Add-on` and open `./extensions/build/firefox/extension.js`.
 
 #### Microsoft Edge Extensions
 
-1. Open `about:debugging#addons`
-2. Turn on `Enable add-on debugging`
-3. Press `Load Temporary Add-on` and open `./extensions/build/firefox/extension.js`
+1. Open `about:flags`.
+2. Select the `Enable extension developer features` checkbox.
+3. Select `More (...)` to open the menu.
+4. Select `Extensions` from the menu.
+5. Select the Load extension button and open `./extensions/build/edge/` folder.
 
 ## WebSocket server
 
