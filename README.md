@@ -14,6 +14,8 @@
 
 #### Microsoft Edge Extensions
 
+Isn't working for now.
+
 1. Open `about:flags`.
 2. Select the `Enable extension developer features` checkbox.
 3. Select `More (...)` to open the menu.
