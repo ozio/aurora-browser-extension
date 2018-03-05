@@ -20,11 +20,13 @@ class EdgeExtension extends Extension {
     browser.tabs.onAttached.addListener(updateUrlHandler);
     browser.tabs.onCreated.addListener(updateUrlHandler);
     browser.tabs.onDetached.addListener(updateUrlHandler);
-    browser.tabs.onHighlighted.addListener(updateUrlHandler);
-    browser.tabs.onMoved.addListener(updateUrlHandler);
     browser.tabs.onRemoved.addListener(updateUrlHandler);
     browser.tabs.onReplaced.addListener(updateUrlHandler);
     browser.tabs.onUpdated.addListener(updateUrlHandler);
+
+    // Unsupported tab events:
+    // browser.tabs.onHighlighted.addListener(updateUrlHandler);
+    // browser.tabs.onMoved.addListener(updateUrlHandler);
   }
 
   getCurrentURL(): Promise<string> {
@@ -32,30 +34,26 @@ class EdgeExtension extends Extension {
       browser.tabs.query({
         active: true,
         windowId: browser.windows.WINDOW_ID_CURRENT,
-      })
-        .then((tabs) => {
-          let url;
+      }, (tabs) => {
+        let url;
 
-          if (tabs[0] && tabs[0].url) {
-            url = tabs[0].url;
-          } else {
-            url = null;
-          }
+        if (tabs[0] && tabs[0].url) {
+          url = tabs[0].url;
+        } else {
+          url = null;
+        }
 
-          resolve(url);
-        })
-      ;
+        resolve(url);
+      });
     });
   }
 
   getFocused(): Promise<boolean> {
     return new Promise((resolve) => {
-      browser.windows.getCurrent(null)
-        .then((window) => {
-          const focusedNow = window && window.focused;
-          resolve(focusedNow);
-        })
-      ;
+      browser.windows.getCurrent(null, (window) => {
+        const focusedNow = window && window.focused;
+        resolve(focusedNow);
+      });
     });
   }
 }

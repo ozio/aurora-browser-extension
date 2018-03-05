@@ -1,7 +1,5 @@
 # Aurora Browser Extenstion
 
-## Extensions
-
 #### Chrome/Opera Extension
 
 1. Open `chrome://extensions/`.
