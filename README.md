@@ -1,5 +1,7 @@
 # Aurora Browser Extenstion
 
+Browser extension for [Aurora](https://github.com/antonpup/Aurora).
+
 #### Chrome/Opera Extension
 
 1. Open `chrome://extensions/`.
@@ -25,6 +27,8 @@ Isn't working for now.
 ## WebSocket server
 
 You can write your own server and start listening on `ws://localhost:1337`, but I also wrote [a simple server on NodeJS](https://github.com/ozio/aurora-websocket-server) for debug reasons.
+
+*Going to be deprecated, because of moving to Native Messaging API.*
 
 ## Protocol
 
@@ -75,10 +79,6 @@ Browser tab have a new url:
 ```
 
 **Explanation:** payload contains fields of [Location](https://developer.mozilla.org/en-US/docs/Web/API/Location) object. Additionally, `searchParams` field is parsed to key-value object.
-
-## ~~Browser SDK~~
-
-~~Also, website developers can include owr [small browser SDK](https://github.com/ozio/aurora-browser-sdk) to their own websites to send their metrics and settings to Aurora through extension.~~
 
 ## Roadmap
 
