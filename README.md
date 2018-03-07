@@ -82,8 +82,5 @@ Browser tab have a new url:
 
 ## Roadmap
 
-- [x] **Bundling:** Turn on code minify;
-- [x] **Extensions:** Microsoft Edge;
-- [ ] **Plugins:** For popular services like YouTube or Facebook;
-- [ ] **UI:** Visual Preferences;
-- [ ] Analytics.
+- [v0.2.0](https://github.com/ozio/aurora-browser-extension/milestone/1)
+- [v0.3.0](https://github.com/ozio/aurora-browser-extension/milestone/2)
