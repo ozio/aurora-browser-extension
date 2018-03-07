@@ -1,5 +1,7 @@
 import Extension from '../extension';
 
+/* Extension API documentation: https://docs.microsoft.com/en-us/microsoft-edge/extensions */
+
 class EdgeExtension extends Extension {
   constructor() {
     super();

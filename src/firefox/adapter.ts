@@ -1,5 +1,7 @@
 import Extension from '../extension';
 
+/* Extension API documentation: https://developer.mozilla.org/en-US/Add-ons/WebExtensions */
+
 class FirefoxExtension extends Extension {
   constructor() {
     super();

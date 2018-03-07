@@ -1,5 +1,7 @@
 import Extension from '../extension';
 
+/* Extension API documentation: https://developer.chrome.com/extensions */
+
 class ChromeExtension extends Extension {
   constructor() {
     super();
