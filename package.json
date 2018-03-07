@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "description": "",
   "scripts": {
-    "build": "rm -rf ./build; webpack",
-    "dev": "rm -rf ./build; webpack --watch"
+    "build": "./bin/build.sh",
+    "release": "./bin/build.sh; ./bin/zip.sh",
+    "dev": "./bin/dev.sh"
   },
   "keywords": [],
   "author": "",

@@ -2,6 +2,18 @@ import Extension from '../extension';
 
 /* Extension API documentation: https://docs.microsoft.com/en-us/microsoft-edge/extensions */
 
+/*
+ * Small cheat for using Chrome TypeScript typings (which Microsoft decides not to implement).
+ * I asked a developers about it in comments on extension API documentation index.
+ */
+let edge;
+
+if ('chrome' in window) {
+  edge = chrome;
+} else {
+  edge = browser;
+}
+
 class EdgeExtension extends Extension {
   constructor() {
     super();
@@ -33,26 +45,29 @@ class EdgeExtension extends Extension {
 
   getCurrentURL(): Promise<string> {
     return new Promise((resolve) => {
-      browser.tabs.query({
-        active: true,
-        windowId: browser.windows.WINDOW_ID_CURRENT,
-      }, (tabs) => {
-        let url;
+      edge.tabs.query(
+        {
+          active: true,
+          windowId: edge.windows.WINDOW_ID_CURRENT,
+        },
+        (tabs) => {
+          let url;
 
-        if (tabs[0] && tabs[0].url) {
-          url = tabs[0].url;
-        } else {
-          url = null;
+          if (tabs[0] && tabs[0].url) {
+            url = tabs[0].url;
+          } else {
+            url = null;
+          }
+
+          resolve(url);
         }
-
-        resolve(url);
-      });
+      );
     });
   }
 
   getFocused(): Promise<boolean> {
     return new Promise((resolve) => {
-      browser.windows.getCurrent(null, (window) => {
+      edge.windows.getCurrent(null, (window) => {
         const focusedNow = window && window.focused;
         resolve(focusedNow);
       });
